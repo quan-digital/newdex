@@ -217,3 +217,6 @@ Code = 200, it means request succeeded, other situations mean error. See error c
 | -1105 | Order has been canceled |
 | -1106 | Order is dealt, cannot be cancel |
 | -1500 | Unknown error |
+
+## TODO
+- More candle options
