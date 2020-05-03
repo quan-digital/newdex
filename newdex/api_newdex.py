@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import logging
 import json
 import time
 import hashlib
 import hmac
-from util.logger import setup_logger
-from util.exceptions import NewdexAPIException
+from newdex.util.logger import setup_logger
+from newdex.util.exceptions import NewdexAPIException
 
 class NewdexV1():
-    def __init__(self, access_key, secret_key,
-                    symbol = 'theonlykarma-karma-wax', max_retries = 3):
+    def __init__(self, access_key, secret_key, symbol = 'theonlykarma-karma-wax', 
+                    log_level = logging.INFO, max_retries = 3):
         self.key = access_key
         self.secret = secret_key
         self.host = 'https://api.newdex.io/v1'
@@ -18,7 +19,7 @@ class NewdexV1():
         self._retries = 0
         self.max_retries = max_retries
 
-        self.logger = setup_logger('NewdexV1')
+        self.logger = setup_logger('NewdexV1', log_level)
         self.logger.info('NewdexV1 initialized. Endpoint: %s, Symbol: %s, Max retries: %s.' % 
                                                 (self.host, self.symbol, self.max_retries))
 
@@ -81,7 +82,7 @@ class NewdexV1():
         else:
             url = self.host + path + self.symbol if '?' in path else self.host + path
 
-        self.logger.info('Sending request to %s' % url)
+        self.logger.debug('Sending request to %s' % url)
         response = requests.get(url).json()
 
         if response["code"] != 200:

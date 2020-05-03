@@ -9,7 +9,6 @@ Newdex api_key needs to be binded with EOS account. [Apply for Newdex Market API
 
 ## REST Market and Trade API
 
-
 ### get_pairs()
 Get the list of all exchange pairs.  
 
