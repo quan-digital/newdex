@@ -219,3 +219,6 @@ Code = 200, it means request succeeded, other situations mean error. See error c
 
 ## TODO
 - More candle options
+
+## Disclosure
+- The author is in no way affiliated with Newdex Exchange or any of its employees and representatives.
